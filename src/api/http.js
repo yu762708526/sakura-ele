@@ -1,22 +1,16 @@
-/*
-ajax请求函数模块
-返回值: promise对象(异步返回的数据是: response.data)
- */
 import axios from 'axios'
 import qs from 'qs'
 
-// 环境的切换
-
 // 根据环境变量区分接口的默认地址
 switch (process.env.NODE_ENV) {
-  // case 'test':
-  //   axios.defaults.baseURL = '/api'
-  //   break
-  // case 'production':
-  //   axios.defaults.baseURL = '/api'
-  //   break
+  case 'test':
+    axios.defaults.baseURL = 'http://localhost:5000'
+    break
+  case 'production':
+    axios.defaults.baseURL = 'http://localhost:6000'
+    break
   default:
-    axios.defaults.baseURL = '/api'
+    axios.defaults.baseURL = 'http://localhost:4000'
     break
 }
 // 设置超时时间和跨域是否允许携带凭证
@@ -25,10 +19,10 @@ axios.defaults.withCredentials = true
 
 // 不要求可以不设置
 // post请求的时候，设置请求传递数据得格式
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
+axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded'
 axios.defaults.transformRequest = params => qs.stringify(params) // 把对象变成字符串  只能用在 'PUT', 'POST' 和 'PATCH' 这几个请求方法
 
-// // 添加请求拦截器
+// 添加请求拦截器
 axios.interceptors.request.use(function (config) {
   // 在发送请求之前做些什么
   // 携带token
@@ -41,28 +35,27 @@ axios.interceptors.request.use(function (config) {
   return Promise.reject(error)
 })
 
-// // 自定义响应成功的HTTP状态码
-// // 一般公司不用
-// // axios.get('/user/12345', {
-// //   validateStatus: function (status) {
-// //     return /^(2|3)\d{2}$/.test(status) // 状态码在200-300时才会 reject
-// //   }
-// // })
+// 自定义响应成功的HTTP状态码
+// 一般公司不用
+// axios.get('/user/12345', {
+//   validateStatus: function (status) {
+//     return /^(2|3)\d{2}$/.test(status) // 状态码在200-300时才会 reject
+//   }
+// })
 
-// // 添加响应拦截器
+// 添加响应拦截器
 axios.interceptors.response.use(function (response) {
   // 对响应数据做点什么
   if (response.status === 200) {
-    return response
+    return Promise.resolve(response)
   } else {
     return Promise.reject(response)
   }
 }, function (error) {
-  const { response } = error
   // 对响应错误做点什么
-  if (response) {
+  if (error.response.status) {
     // 服务器起码返回了结果
-    switch (response.status) {
+    switch (error.response.status) {
       // 401: 未登录
       // 未登录则跳转登录页面，并携带当前页面的路径
       // 在登录成功后返回当前页面，这一步需要在登录页操作。
@@ -105,6 +98,12 @@ axios.interceptors.response.use(function (response) {
         //   forbidClick: true
         // })
         break
+      default:
+        Toast({
+          message: error.response.data.message,
+          duration: 1500,
+          forbidClick: true
+        })
     }
   } else {
     // 服务器连结果都没有返回
@@ -115,36 +114,3 @@ axios.interceptors.response.use(function (response) {
     return Promise.reject(error.response)
   }
 })
-
-export default function ajax (url, params = {}, type = '') {
-  return new Promise(function (resolve, reject) {
-    // 执行异步ajax请求
-    let promise
-    if (type === 'GET') {
-      // 准备url query参数数据
-      // let dataStr = '' // 数据拼接字符串
-      // Object.keys(data).forEach(key => {
-      //   dataStr += key + '=' + data[key] + '&'
-      // })
-      // if (dataStr !== '') {
-      //   dataStr = dataStr.substring(0, dataStr.lastIndexOf('&'))
-      // dataStr = qs.stringify(data)
-      // if (dataStr !== '') {
-      //   url = url + '?' + dataStr
-      // }
-      // }
-      // 发送get请求
-      promise = axios.get(url, { params: params })
-    } else if (type === 'post') {
-      // 发送post请求
-      promise = axios.post(url, params)
-    }
-    promise.then((response) => {
-      // 成功了调用resolve()
-      resolve(response.data)
-    }).catch((error) => {
-      // 失败了调用reject()
-      reject(error)
-    })
-  })
-}

@@ -6,15 +6,20 @@
 </template>
 <script>
 import FooterGuide from '../src/components/FooterGuide/FooterGuide'
+import { mapActions } from 'vuex'
 export default {
   components: {
     FooterGuide
   },
   mounted () {
-
+    this.getAddress()
+    this.$store.dispatch('updataUserInfo') // 刷新自动登陆账户
   },
   methods: {
+    // 从actions中获取接口数据传入mutations再传入state中
+    ...mapActions(['getAddress'])
   }
+
 }
 </script>
 <style lang="stylus">

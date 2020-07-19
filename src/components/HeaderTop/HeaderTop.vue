@@ -10,6 +10,7 @@
 <script>
 export default {
   props: ['title']
+
 }
 </script>
 <style lang="stylus" scoped>
@@ -27,9 +28,9 @@ export default {
     height 45px
     line-height 45px
     width 10%
+    color #f5f5f5
     .searchIcon
       font-size 25px
-      color #fff
   .header_title
     position absolute
     top 50%

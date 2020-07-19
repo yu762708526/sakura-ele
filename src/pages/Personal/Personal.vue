@@ -2,17 +2,17 @@
   <div class="profile">
     <header-top title="我的"></header-top>
     <section class="profile-number">
-      <router-link to="/login" class="profile-link">
+      <router-link :to="userinfo._id?'/userinfo':'/login'" class="profile-link">
         <div class="profile_image">
           <i class="iconfont icon-person">&#xe60f;</i>
         </div>
         <div class="user-info">
-          <p class="user-info-top">登录/注册</p>
+          <p class="user-info-top" v-if="!userinfo.phone">{{userinfo.name || '登录/注册'}}</p>
           <p>
             <span class="user-icon">
               <i class="iconfont icon-shouji icon-mobile">&#xe660;</i>
             </span>
-            <span class="icon-mobile-number">暂无绑定手机号</span>
+            <span class="icon-mobile-number">{{userinfo.phone || '暂无绑定手机号'}}</span>
           </p>
         </div>
         <span class="arrow">
@@ -88,13 +88,42 @@
         </div>
       </a>
     </section>
+    <div class="profile_my_order">
+      <van-button type="primary" size="large" @click="getOut" v-if="userinfo._id">退出登录</van-button>
+    </div>
+
   </div>
 </template>
 <script>
+import { Dialog, Toast } from 'vant'
+
 import HeaderTop from '../../components/HeaderTop/HeaderTop'
+import { reqLogout } from '../../api/index'
+import { mapState } from 'vuex'
 export default {
   components: {
     HeaderTop
+  },
+  computed: {
+    ...mapState(['userinfo'])
+  },
+  methods: {
+    getOut () {
+      Dialog.confirm({
+        title: '提示',
+        message: '确定退出吗？'
+      })
+        .then((confirm) => {
+          this.$store.dispatch('getOut')
+          Toast('退出成功')
+        },
+        (cancel) => {
+        }
+        )
+        .catch(() => {
+          // on cancel
+        })
+    }
   }
 }
 </script>
