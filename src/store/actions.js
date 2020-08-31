@@ -75,12 +75,12 @@ export default {
     }
   },
   // 异步获取商品信息
-  async getShopGoods ({ commit }, callBack) {
+  async getShopGoods ({ commit }, callback) {
     const result = await reqShopGoods()
     if (result.code === 0) {
       const shopgoods = result.data
       commit(RECEIVE_SHOPGOODS, { shopgoods })
-      callBack && callBack()
+      callback && callback()
     }
   },
   // 增加或减少购物车数量

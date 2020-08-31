@@ -12,8 +12,11 @@
 <script>
 export default {
   props: ['food'],
+  data () {
+    return {
+    }
+  },
   mounted () {
-    // console.log(this.food)
   },
   methods: {
     updataCartCount (isAdd) {

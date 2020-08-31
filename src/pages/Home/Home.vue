@@ -114,7 +114,7 @@ export default {
     width 100%
     .bscrollClass
       .msite_nav
-        bottom-border-1px(#e4e4e4)
+        bottom-border-0 1px #e4e4e4
         height 200px
         background #fff
         .swiper-container
@@ -149,27 +149,24 @@ export default {
                   text-align center
                   font-size 13px
                   color #666
-          .swiper-pagination
-            >span.swiper-pagination-bullet-active
-              background #02a774
       .msite_shop_list
-        top-border-1px(#e4e4e4)
-        margin-top 10px
+        top-border-0 0.0625rem #e4e4e4
+        margin-top 0.625rem
         background #fff
         .shop_header
-          padding 10px 10px 0
+          padding 0.625rem 0.625rem 0
           .iconList
-            margin-left 5px
+            margin-left 0.3125rem
             color #999
-            margin-right 5px
+            margin-right 0.3125rem
             vertical-align middle
-            height 20px
-            line-height 20px
+            height 1.25rem
+            line-height 1.25rem
           .shop_header_title
             color #999
-            font-size 14px
-            line-height 20px
-            height 20px
-            line-height 20px
+            font-size 0.875rem
+            line-height 1.25rem
+            height 1.25rem
+            line-height 1.25rem
             vertical-align middle
 </style>

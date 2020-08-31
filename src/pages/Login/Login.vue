@@ -201,28 +201,28 @@ export default {
   height 100%
   background #fff
   .loginInner
-    padding-top 60px
+    padding-top 3.75rem
     width 80%
     margin 0 auto
     .login_header
       .login_logo
-        font-size 40px
+        font-size 2.5rem
         font-weight bold
         color #02a774
         text-align center
       .login_header_title
-        padding-top 40px
+        padding-top 2.5rem
         text-align center
         >a
           color #333
-          font-size 14px
-          padding-bottom 4px
+          font-size 0.875rem
+          padding-bottom 0.25rem
           &:first-child
-            margin-right 40px
+            margin-right 2.5rem
           &.on
             color #02a774
             font-weight 700
-            border-bottom 2px solid #02a774
+            border-bottom 0.125rem solid #02a774
     .login_content
       >form
         >div
@@ -232,54 +232,54 @@ export default {
           input
             width 100%
             height 100%
-            padding-left 10px
+            padding-left 0.625rem
             box-sizing border-box
-            border 1px solid #ddd
-            border-radius 4px
+            border 0.0625rem solid #ddd
+            border-radius 0.25rem
             outline 0
-            font 400 14px Arial
+            font 400 0.875rem Arial
             &:focus
-              border 1px solid #02a774
+              border 0.0625rem solid #02a774
           .login_message
             position relative
-            margin-top 16px
-            height 48px
-            font-size 14px
+            margin-top 1rem
+            height 3rem
+            font-size 0.875rem
             background #fff
             .get_verification
               position absolute
               top 50%
-              right 10px
+              right 0.625rem
               transform translateY(-50%)
               border 0
               color #ccc
-              font-size 14px
+              font-size 0.875rem
               background transparent
               &.right_phone
                 color black
           .login_verification
             position relative
-            margin-top 16px
-            height 48px
-            font-size 14px
+            margin-top 1rem
+            height 3rem
+            font-size 0.875rem
             background #fff
             .inputTwo
               display none
               &.on
                 display block
             .switch_button
-              font-size 12px
-              border 1px solid #ddd
-              border-radius 8px
+              font-size 0.75rem
+              border 0.0625rem solid #ddd
+              border-radius 0.5rem
               transition background-color 0.3s, border-color 0.3s
-              padding 0 6px
-              width 30px
-              height 16px
-              line-height 16px
+              padding 0 0.375rem
+              width 1.875rem
+              height 1rem
+              line-height 1rem
               color #fff
               position absolute
               top 50%
-              right 10px
+              right 0.625rem
               transform translateY(-50%)
               &.off
                 background #fff
@@ -290,50 +290,50 @@ export default {
                 background #02a774
               >.switch_circle
                 &.right
-                  transform translateX(27px)
-                // transform translateX(27px)
+                  transform translateX(1.6875rem)
+                // transform translateX(1.6875rem)
                 position absolute
-                top -1px
-                left -1px
-                width 16px
-                height 16px
-                border 1px solid #ddd
+                top -0.0625rem
+                left -0.0625rem
+                width 1rem
+                height 1rem
+                border 0.0625rem solid #ddd
                 border-radius 50%
                 background #fff
-                box-shadow 0 2px 4px 0 rgba(0, 0, 0, 0.1)
+                box-shadow 0 0.125rem 0.25rem 0 rgba(0, 0, 0, 0.1)
                 transition transform 0.3s
           .login_hint
-            margin-top 12px
+            margin-top 0.75rem
             color #999
-            font-size 14px
-            line-height 20px
+            font-size 0.875rem
+            line-height 1.25rem
             >a
               color #02a774
         .login_submit
           display block
           width 100%
-          height 42px
-          margin-top 30px
-          border-radius 4px
+          height 2.625rem
+          margin-top 1.875rem
+          border-radius 0.25rem
           background #4cd96f
           color #fff
           text-align center
-          font-size 16px
-          line-height 42px
+          font-size 1rem
+          line-height 2.625rem
           border 0
       .about_us
         display block
-        font-size 12px
-        margin-top 20px
+        font-size 0.75rem
+        margin-top 1.25rem
         text-align center
         color #999
     .go_back
       position absolute
-      top 5px
-      left 5px
-      width 30px
-      height 30px
+      top 0.3125rem
+      left 0.3125rem
+      width 1.875rem
+      height 1.875rem
       >.iconfont
-        font-size 20px
+        font-size 1.25rem
         color #999
 </style>

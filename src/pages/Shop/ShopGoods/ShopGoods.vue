@@ -11,12 +11,6 @@
               {{item.name}}
             </span>
           </li>
-          <!-- <li class="menu-item">
-            <span class="text bottom-border-1px">
-              <img class="icon" src="https://fuss10.elemecdn.com/b/91/8cf4f67e0e8223931cd595dc932fepng.png">
-              优惠
-            </span>
-          </li> -->
         </ul>
       </div>
       <div class="foods-wrapper" ref="foodsWrapper">
@@ -85,7 +79,6 @@ export default {
       return index
     }
   },
-
   mounted () {
     this.$store.dispatch('getShopGoods', () => { // 数据更新后执行
       this.$nextTick(() => { // 列表数据更新显示后执行
@@ -157,7 +150,7 @@ export default {
       // 找到所有分类的li
       const lis = this.$refs.foodsRef
       Array.prototype.slice.call(lis).forEach(li => {
-        top += li.clientHeight
+        top += li.offsetHeight
         tops.push(top)
       })
 
